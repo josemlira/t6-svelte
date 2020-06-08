@@ -16,6 +16,9 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "sirv-cli": "^0.4.4"
+    "chart.js": "^2.9.3",
+    "simple-svelte-autocomplete": "^1.1.2",
+    "sirv-cli": "^0.4.4",
+    "svelte-accordion": "0.0.0-development"
   }
 }

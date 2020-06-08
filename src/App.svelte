@@ -1,34 +1,16 @@
 <svelte:head>
-	<title>TrendSpy</title>
+	<title>CovidSpy</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css">
 </svelte:head>
 
 <script>
-	import Trends from './components/trends.svelte'
-	import Error from './components/error.svelte'
-
-	export let position = undefined
-	let requesting = true
-	let error = undefined
-
-	navigator.geolocation.getCurrentPosition(
-		(pos) => {
-			position = pos.coords
-			console.log(position)
-			requesting = false
-		},
-		(err) => {
-			error = err.message
-			requesting = false
-		},
-	)
+	import WorldInfo from './components/worldinfo.svelte'
+	import ChooseCountry from './components/choosecountry.svelte'
+	import Chart from './components/chart.svelte'
+	import CountriesInfo from './components/countriesinfo.svelte'
 </script>
 
 <style>
-	.main-container {
-		margin-top: 100px;
-	}
-
 	.main-content {
 		margin-top: 50px;
 	}
@@ -41,22 +23,21 @@
 </style>
 
 <div class="container has-text-centered main-container">
-	<div class="columns">
-		<div class="column"/>
-		<div class="column is-8">
-			<h1>Welcome to TrendSpy!</h1>
-			<div class="main-content">
-				{#if position}
-					<Trends />
-				{:else if requesting}
-					<div class="notification"></div>
-				{:else}
-					<Error level="danger" error="No fue posible visualizar la aplicación">
-						<p>{error}</p>
-					</Error>
-				{/if}
+	<h1>Welcome to CovidSpy!</h1>
+	<div class="main-content">
+		<div class="box">
+			<div class="container columns">
+				<aside class="menu column is-3">
+					<WorldInfo />
+					<ChooseCountry />
+				</aside>
+				<div class="column is-6">
+					<Chart />
+				</div>
+				<div class="column is-3">
+					<CountriesInfo />
+				</div>
 			</div>
 		</div>
-		<div class="column"/>
 	</div>
 </div>
