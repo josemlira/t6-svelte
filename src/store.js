@@ -68,6 +68,8 @@ function createCountriesStore(initial) {
       }
       update(state => Object.assign({}, state, { loading: false }))
     },
+    changeSelectedCountry: (countryName) =>
+      update(state => Object.assign({}, state, { selectedCountry: countryName })),
     reset: () => set(initial),
   }
 }
